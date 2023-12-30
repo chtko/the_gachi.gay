@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка файла по URL</title>
+</head>
+<body>
+
+<h1>Загрузка файла по URL</h1>
+
+<form id="uploadForm">
+    <label for="fileUrl">URL файла:</label>
+    <input type="text" id="fileUrl" name="fileUrl" required>
+    <button type="button" onclick="uploadFile()">Загрузить</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    function uploadFile() {
+        var fileUrl = document.getElementById('fileUrl').value;
+        var formData = new FormData();
+        formData.append('fileUrl', fileUrl);
+
+        fetch('upload_endpoint_url', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.id) {
+                var resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = 'Файл успешно загружен. URL: ' + data.id;
+                alert('Файл успешно загружен. URL: ' + data.id);
+            } else {
+                alert('Ошибка при загрузке файла.');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка при выполнении запроса.');
+        });
+    }
+</script>
+
+</body>
+</html>
