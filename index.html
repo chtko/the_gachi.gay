@@ -22,9 +22,9 @@
     function uploadFile() {
         var fileUrl = document.getElementById('fileUrl').value;
         var formData = new FormData();
-        formData.append('file', fileUrl);  // Поменяли 'fileUrl' на 'file'
+        formData.append('file', fileUrl);  // Отправляем URL под ключем "file"
 
-        fetch('https://gachi.gay/api/upload', {  // Поменяли URL-адрес на реальный
+        fetch('https://gachi.gay/api/upload', {
             method: 'POST',
             body: formData
         })
@@ -47,4 +47,3 @@
 
 </body>
 </html>
-
