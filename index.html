@@ -21,9 +21,19 @@
 <script>
     function uploadFile() {
         var fileUrl = document.getElementById('fileUrl').value;
+        
+        // Проверяем, что введенный URL является допустимым URL изображения
+        if (!isImageURL(fileUrl)) {
+            alert('Введите корректный URL изображения.');
+            return;
+        }
 
-        fetch(`https://gachi.gay/api/upload?url=${encodeURIComponent(fileUrl)}`, {
+        var formData = new FormData();
+        formData.append('fileUrl', fileUrl);
+
+        fetch('https://gachi.gay/api/upload', {
             method: 'POST',
+            body: formData
         })
         .then(response => response.json())
         .then(data => {
@@ -39,6 +49,11 @@
             console.error('Ошибка:', error);
             alert('Произошла ошибка при выполнении запроса.');
         });
+    }
+
+    // Функция для проверки, является ли URL изображением
+    function isImageURL(url) {
+        return /\.(jpeg|jpg|gif|png)$/i.test(url);
     }
 </script>
 
