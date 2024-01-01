@@ -28,12 +28,16 @@
             return;
         }
 
-        var formData = new FormData();
-        formData.append('fileUrl', fileUrl);
+        var data = {
+            fileUrl: fileUrl
+        };
 
         fetch('https://gachi.gay/api/upload', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
         .then(response => response.json())
         .then(data => {
