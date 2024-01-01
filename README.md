@@ -1,4 +1,4 @@
-## Описание
+## Описание не актуально:(
 
 ### Загрузка файла по URL
 
@@ -20,4 +20,4 @@
 
 ### Статус сайта
 
-[![Сайт активен](https://img.shields.io/badge/Сайт-активен-brightgreen)](https://chtko.github.io/the_gachi.gay/)
+[![Сайт успешно не активен](https://img.shields.io/badge/Сайт-активен-brightgreen)](https://chtko.github.io/the_gachi.gay/)
